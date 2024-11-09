@@ -17,7 +17,7 @@ type Locations struct {
 }
 
 func (c *Client) ListLocations(page *string) (Locations, error) {
-	url := baseUrl
+	url := baseUrl + "/location-area"
 	if page != nil {
 		url = *page
 	}
