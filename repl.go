@@ -25,7 +25,7 @@ func repl(conf *config) {
 
 		command, ok := commands()[input]
 		if ok {
-			err := command.callback(conf)
+			err := command.callback(conf, args...)
 			if err != nil {
 				fmt.Println(err)
 			}
@@ -47,7 +47,7 @@ func parseInput(input string) string {
 type cliCommand struct {
 	name        string
 	description string
-	callback    func(conf *config) error
+	callback    func(*config, ...string) error
 }
 
 func commands() map[string]cliCommand {
