@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 )
 
 func repl() {
@@ -12,7 +13,7 @@ func repl() {
 		fmt.Print("pokedex > ")
 
 		scanner.Scan()
-		input := scanner.Text()
+		input := parseInput(scanner.Text())
 
 		command, ok := commands()[input]
 		if ok {
@@ -27,6 +28,12 @@ func repl() {
 		}
 
 	}
+}
+
+func parseInput(input string) string {
+	lower := strings.ToLower(input)
+	trimmed := strings.TrimSpace(lower)
+	return trimmed
 }
 
 type cliCommand struct {
