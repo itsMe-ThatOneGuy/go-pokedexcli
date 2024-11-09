@@ -22,8 +22,13 @@ func repl(conf *config) {
 
 		scanner.Scan()
 		input := parseInput(scanner.Text())
+		if len(input) == 0 {
+			continue
+		}
+		cmdName := input[0]
 
-		command, ok := commands()[input]
+
+		command, ok := commands()[cmdName]
 		if ok {
 			err := command.callback(conf, args...)
 			if err != nil {
@@ -38,10 +43,10 @@ func repl(conf *config) {
 	}
 }
 
-func parseInput(input string) string {
+func parseInput(input string) []string {
 	lower := strings.ToLower(input)
-	trimmed := strings.TrimSpace(lower)
-	return trimmed
+	feilds := strings.Fields(lower)
+	return feilds
 }
 
 type cliCommand struct {
