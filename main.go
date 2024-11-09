@@ -1,5 +1,11 @@
 package main
 
+import "github.com/itsMe-ThatOneGuy/go-pokedexcli/internal/pokeapi"
+
 func main() {
-	repl()
+	pokeClient := pokeapi.NewClient()
+	conf := &config{
+		pokeapiClient: pokeClient,
+	}
+	repl(conf)
 }
