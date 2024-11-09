@@ -1,6 +1,6 @@
 package pokeapi
 
-type Locations struct {
+type LocationsList struct {
 	Count    int     `json:"count"`
 	Next     *string `json:"next"`
 	Previous *string `json:"Previous"`
