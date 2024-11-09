@@ -5,9 +5,17 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/itsMe-ThatOneGuy/go-pokedexcli/internal/pokeapi"
 )
 
-func repl() {
+type config struct {
+	pokeapiClient pokeapi.Client
+	nextLocation  *string
+	prevLocation  *string
+}
+
+func repl(conf *config) {
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 		fmt.Print("pokedex > ")
