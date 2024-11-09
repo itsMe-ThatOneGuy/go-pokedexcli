@@ -22,6 +22,16 @@ func (c *Client) ListLocations(page *string) (Locations, error) {
 		url = *page
 	}
 
+	if val, ok := c.cache.Get(url); ok {
+		locationRes := Locations{}
+		err := json.Unmarshal(val, &locationRes)
+		if err != nil {
+			return Locations{}, nil
+		}
+
+		return locationRes, nil
+	}
+
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return Locations{}, nil
@@ -44,5 +54,6 @@ func (c *Client) ListLocations(page *string) (Locations, error) {
 		return Locations{}, nil
 	}
 
+	c.cache.Add(url, data)
 	return locationRes, nil
 }
