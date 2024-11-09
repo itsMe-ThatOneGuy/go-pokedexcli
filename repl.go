@@ -27,6 +27,10 @@ func repl(conf *config) {
 		}
 		cmdName := input[0]
 
+		args := []string{}
+		if len(input) > 1 {
+			args = input[1:]
+		}
 
 		command, ok := commands()[cmdName]
 		if ok {
