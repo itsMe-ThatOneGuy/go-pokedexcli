@@ -6,6 +6,7 @@ func main() {
 	pokeClient := pokeapi.NewClient()
 	conf := &config{
 		pokeapiClient: pokeClient,
+		caughtPokemon: map[string]pokeapi.Pokemon{},
 	}
 	repl(conf)
 }
