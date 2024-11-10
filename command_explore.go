@@ -16,7 +16,7 @@ func commandExplore(conf *config, args ...string) error {
 		return err
 	}
 
-	fmt.Printf("Exploring %s...\n", name)
+	fmt.Printf("Exploring %s...\n", location.Name)
 	fmt.Println("Pokemon Found:")
 	for _, pokemon := range location.PokemonEncounters {
 		fmt.Printf(" - %s\n", pokemon.Pokemon.Name)
