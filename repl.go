@@ -68,8 +68,8 @@ func commands() map[string]cliCommand {
 			callback:    commandHelp,
 		},
 		"catch": {
-			name:        "catch <pokemon-name",
-			description: "Attempt to catch",
+			name:        "catch <pokemon-name>",
+			description: "Attempt to catch a Pokemon",
 			callback:    commandCatch,
 		},
 		"inspect": {
@@ -89,7 +89,7 @@ func commands() map[string]cliCommand {
 		},
 		"mapb": {
 			name:        "mapb",
-			description: "Ge the previous page of locations",
+			description: "Get the previous page of locations",
 			callback:    commandMapb,
 		},
 		"exit": {
